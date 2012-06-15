@@ -8,11 +8,11 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
+theme.wallpaper_cmd = { "awsetbg /home/matt/Documents/Design/Wallpapers/Work/Work-blue.png" }
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "Roboto Medium 9"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"

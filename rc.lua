@@ -41,7 +41,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --theme.wallpaper_cmd = { "awsetbg /home/matt/Documents/Wallpapers/Work/Work-blue.png" }
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init(beautiful.init(awful.util.getdir("config") .. "/themes/zenburn/theme.lua")
+)
 awful.util.spawn("xcompmgr")
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
