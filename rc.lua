@@ -261,7 +261,7 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
 	awful.key({ modkey, "Control"   }, "Left",
 		function (c)
-				local len = #eminent.gettags()
+				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
 				if curidx == 1 then
 						c:tags({screen[mouse.screen]:tags()[len]})
@@ -271,7 +271,7 @@ clientkeys = awful.util.table.join(
 		end),
 	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
-				local len = #eminent.gettags()
+				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
 				if curidx == len then
 						c:tags({screen[mouse.screen]:tags()[1]})
