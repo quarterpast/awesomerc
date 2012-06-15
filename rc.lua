@@ -261,10 +261,10 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
 	awful.key({ modkey, "Control"   }, "Left",
 		function (c)
-				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
 				local sc = mouse.screen
 				awful.tag.viewprev()
+				local len = #eminent.gettags(mouse.screen)
 				if curidx == 1 then
 						c:tags({eminent.gettags(sc)[len]})
 				else
@@ -273,10 +273,10 @@ clientkeys = awful.util.table.join(
 		end),
 	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
-				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
 				local sc = mouse.screen
 				awful.tag.viewnext()
+				local len = #eminent.gettags(mouse.screen)
 				if curidx == len then
 						c:tags({eminent.gettags(sc)[1]})
 				else
