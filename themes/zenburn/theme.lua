@@ -15,8 +15,8 @@ theme.wallpaper_cmd = { "awsetbg /home/matt/Documents/Design/Wallpapers/Work/Wor
 theme.font      = "Roboto Medium 9"
 
 -- {{{ Colors
-theme.fg_normal = "#DCDCCC"
-theme.fg_focus  = "#F0DFAF"
+theme.fg_normal = "#ddd"
+theme.fg_focus  = "#ddd"
 theme.fg_urgent = "#CC9393"
 theme.bg_normal = "#3F3F3F"
 theme.bg_focus  = "#1E2320"
