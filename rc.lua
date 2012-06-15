@@ -40,7 +40,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+--theme.wallpaper_cmd = { "awsetbg /home/matt/Documents/Wallpapers/Work/Work-blue.png" }
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 awful.util.spawn("xcompmgr")
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -192,9 +193,10 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-	awful.button({ }, 3, function () mymainmenu:toggle() end),
 	awful.button({ }, 4, awful.tag.viewnext),
-	awful.button({ }, 5, awful.tag.viewprev)
+	awful.button({ }, 5, awful.tag.viewprev),
+	awful.button({ }, 11, awful.tag.viewnext),
+	awful.button({ }, 10, awful.tag.viewprev)
 ))
 -- }}}
 
