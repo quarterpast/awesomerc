@@ -350,7 +350,10 @@ for i = 1, keynumber do
 clientbuttons = awful.util.table.join(
 	awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
 	awful.button({ modkey }, 1, awful.mouse.client.move),
-	awful.button({ modkey }, 3, awful.mouse.client.resize))
+	awful.button({ modkey }, 3, awful.mouse.client.resize),
+	awful.button({ }, 11, awful.tag.viewnext),
+	awful.button({ }, 10, awful.tag.viewprev),
+	awful.button({ }, 17, function() revelation() end))
 
 -- Set keys
 root.keys(globalkeys)
