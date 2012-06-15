@@ -368,7 +368,7 @@ awful.rules.rules = {
 			properties = { floating = true } },
 	{ rule = { class = "pinentry" },
 			properties = { floating = true } },
-	{ rule = { class = "xev" },
+	{ rule = { name = "Event Tester" },
 			properties = { floating = true } },
 	{ rule = { class = "gimp" },
 			properties = { floating = true } },
