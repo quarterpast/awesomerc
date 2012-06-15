@@ -263,23 +263,25 @@ clientkeys = awful.util.table.join(
 		function (c)
 				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
-				if curidx == 1 then
-						c:tags({screen[mouse.screen]:tags()[len]})
-				else
-						c:tags({screen[mouse.screen]:tags()[curidx - 1]})
-				end
+				local sc = mouse.screen
 				awful.tag.viewprev()
+				if curidx == 1 then
+						c:tags({eminent.gettags(sc)[len]})
+				else
+						c:tags({eminent.gettags(sc)[curidx - 1]})
+				end
 		end),
 	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
 				local len = #eminent.gettags(mouse.screen)
 				local curidx = awful.tag.getidx(c:tags()[1])
-				if curidx == len then
-						c:tags({screen[mouse.screen]:tags()[1]})
-				else
-						c:tags({screen[mouse.screen]:tags()[curidx + 1]})
-				end
+				local sc = mouse.screen
 				awful.tag.viewnext()
+				if curidx == len then
+						c:tags({eminent.gettags(sc)[1]})
+				else
+						c:tags({eminent.gettags(sc)[curidx + 1]})
+				end
 			end),
 	awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
