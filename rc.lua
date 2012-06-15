@@ -353,7 +353,9 @@ clientbuttons = awful.util.table.join(
 	awful.button({ modkey }, 3, awful.mouse.client.resize),
 	awful.button({ }, 11, awful.tag.viewnext),
 	awful.button({ }, 10, awful.tag.viewprev),
-	awful.button({ }, 17, function() revelation() end))
+	awful.button({ }, 17, function() revelation() end),
+	awful.button({ }, 19, function () awful.layout.inc(layouts,  1) end),
+	awful.button({ }, 18, function () awful.layout.inc(layouts, -1) end))
 
 -- Set keys
 root.keys(globalkeys)
