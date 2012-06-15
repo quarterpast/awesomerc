@@ -259,7 +259,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-	awful.key({ modkey, "Alt"   }, "Left",
+	awful.key({ modkey, "Control"   }, "Left",
 		function (c)
 				local curidx = awful.tag.getidx(c:tags()[1])
 				if curidx == 1 then
@@ -268,7 +268,7 @@ clientkeys = awful.util.table.join(
 						c:tags({screen[mouse.screen]:tags()[curidx - 1]})
 				end
 		end),
-	awful.key({ modkey, "Alt"   }, "Right",
+	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
 					local curidx = awful.tag.getidx(c:tags()[1])
 					if curidx == screen[mouse.screen]:tags().getn() then
