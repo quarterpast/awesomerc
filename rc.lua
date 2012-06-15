@@ -40,7 +40,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+--theme.wallpaper_cmd = { "awsetbg /home/matt/Documents/Wallpapers/Work/Work-blue.png" }
+beautiful.init(beautiful.init(awful.util.getdir("config") .. "/themes/zenburn/theme.lua")
+)
 awful.util.spawn("xcompmgr")
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -192,9 +194,10 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-	awful.button({ }, 3, function () mymainmenu:toggle() end),
 	awful.button({ }, 4, awful.tag.viewnext),
-	awful.button({ }, 5, awful.tag.viewprev)
+	awful.button({ }, 5, awful.tag.viewprev),
+	awful.button({ }, 11, awful.tag.viewnext),
+	awful.button({ }, 10, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -347,7 +350,12 @@ for i = 1, keynumber do
 clientbuttons = awful.util.table.join(
 	awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
 	awful.button({ modkey }, 1, awful.mouse.client.move),
-	awful.button({ modkey }, 3, awful.mouse.client.resize))
+	awful.button({ modkey }, 3, awful.mouse.client.resize),
+	awful.button({ }, 11, awful.tag.viewnext),
+	awful.button({ }, 10, awful.tag.viewprev),
+	awful.button({ }, 17, function() revelation() end),
+	awful.button({ }, 19, function () awful.layout.inc(layouts,  1) end),
+	awful.button({ }, 18, function () awful.layout.inc(layouts, -1) end))
 
 -- Set keys
 root.keys(globalkeys)
@@ -367,6 +375,8 @@ awful.rules.rules = {
 	{ rule = { class = "switchboard" },
 			properties = { floating = true } },
 	{ rule = { class = "pinentry" },
+			properties = { floating = true } },
+	{ rule = { name = "Event Tester" },
 			properties = { floating = true } },
 	{ rule = { class = "gimp" },
 			properties = { floating = true } },
