@@ -270,6 +270,7 @@ clientkeys = awful.util.table.join(
 				else
 						c:tags({eminent.gettags(sc)[curidx - 1]})
 				end
+				c:raise()
 		end),
 	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
@@ -282,6 +283,7 @@ clientkeys = awful.util.table.join(
 				else
 						c:tags({eminent.gettags(sc)[curidx + 1]})
 				end
+				c:raise()
 			end),
 	awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
