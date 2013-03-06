@@ -115,6 +115,7 @@ mywibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
+mybattmon = {}
 mytaglist.buttons = awful.util.table.join(
 					awful.button({ }, 1, awful.tag.viewonly),
 					awful.button({ modkey }, 1, awful.client.movetotag),
@@ -176,6 +177,7 @@ for s = 1, screen.count() do
 
 	-- Create the wibox
 	mywibox[s] = awful.wibox({ position = "top", screen = s })
+	mybattmon[s] = widget({ type = "textbox", name = "mybattmon", align = "right" })
 	-- Add widgets to the wibox - order matters
 	mywibox[s].widgets = {
 		{
@@ -264,27 +266,19 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
 	awful.key({ modkey, "Control"   }, "Left",
 		function (c)
-				local curidx = awful.tag.getidx(c:tags()[1])
-				local sc = mouse.screen
 				awful.tag.viewprev()
-				local len = #eminent.gettags(mouse.screen)
-				if curidx == 1 then
-						c:tags({eminent.gettags(sc)[len]})
-				else
-						c:tags({eminent.gettags(sc)[curidx - 1]})
-				end
+				c:tags({awful.tag.selected(mouse.screen)})
 				c:raise()
 		end),
 	awful.key({ modkey, "Control"   }, "Right",
 		function (c)
-				local curidx = awful.tag.getidx(c:tags()[1])
-				local sc = mouse.screen
-				awful.tag.viewnext()
-				local len = #eminent.gettags(mouse.screen)
-				if curidx == len then
-						c:tags({eminent.gettags(sc)[1]})
+				local num_clients = #(c:tags()[1]:clients())
+				if num_clients == 1 then
+					c:tags({eminent.gettags(mouse.screen)[1]})
+					awful.tag.viewnext()
 				else
-						c:tags({eminent.gettags(sc)[curidx + 1]})
+					awful.tag.viewnext()
+					c:tags({awful.tag.selected(mouse.screen)})
 				end
 				c:raise()
 			end),
@@ -353,6 +347,7 @@ clientbuttons = awful.util.table.join(
 	awful.button({ modkey }, 3, awful.mouse.client.resize),
 	awful.button({ }, 11, awful.tag.viewnext),
 	awful.button({ }, 10, awful.tag.viewprev),
+	awful.button({ }, 16, function(c) c:kill() end),
 	awful.button({ }, 17, function() revelation() end),
 	awful.button({ }, 19, function () awful.layout.inc(layouts,  1) end),
 	awful.button({ }, 18, function () awful.layout.inc(layouts, -1) end))
